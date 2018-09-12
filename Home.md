@@ -1,1 +1,1 @@
-[ogamed full documentation]()
+[ogamed full documentation](/alaingilbert/ogame/wiki/ogamed-full-documentation)
