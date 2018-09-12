@@ -234,6 +234,8 @@ curl 127.0.0.1:8080/bot/fleets
 
 `POST /bot/planets/:planetID/send-fleet`
 
+Refer to [constants.go](https://github.com/alaingilbert/ogame/blob/master/constants.go) to figure out the IDs for `mission` / `speed` / `ships`...
+
 ```
 curl 127.0.0.1:8080/bot/planets/123/send-fleet -d 'ships=204,1&ships=205,2&speed=10&galaxy=4&system=208&position=8&mission=3&metal=1&crystal=2&deuterium=3'
 ```
@@ -468,6 +470,123 @@ Result:
 			"Min": 20,
 			"Max": 60
 		}
+	}
+}
+```
+
+### Get planet resources buildings
+
+`GET  /bot/planets/:planetID/resources-buildings`
+
+```
+curl 127.0.0.1:8080/bot/planets/33711028/resources-buildings
+```
+
+Result:
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": {
+		"MetalMine": 22,
+		"CrystalMine": 20,
+		"DeuteriumSynthesizer": 17,
+		"SolarPlant": 24,
+		"FusionReactor": 8,
+		"SolarSatellite": 0,
+		"MetalStorage": 9,
+		"CrystalStorage": 8,
+		"DeuteriumTank": 7
+	}
+}
+```
+
+### Get planet facilities
+
+`GET  /bot/planets/:planetID/facilities`
+
+```
+curl 127.0.0.1:8080/bot/planets/33711028/facilities
+```
+
+Result:
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": {
+		"RoboticsFactory": 2,
+		"Shipyard": 0,
+		"ResearchLab": 0,
+		"AllianceDepot": 0,
+		"MissileSilo": 0,
+		"NaniteFactory": 0,
+		"Terraformer": 0,
+		"SpaceDock": 0
+	}
+}
+```
+
+### Get planet defences
+
+`GET  /bot/planets/:planetID/defence`
+
+```
+curl 127.0.0.1:8080/bot/planets/33711028/defence
+```
+
+Result:
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": {
+		"RocketLauncher": 0,
+		"LightLaser": 0,
+		"HeavyLaser": 0,
+		"GaussCannon": 0,
+		"IonCannon": 0,
+		"PlasmaTurret": 0,
+		"SmallShieldDome": 0,
+		"LargeShieldDome": 0,
+		"AntiBallisticMissiles": 0,
+		"InterplanetaryMissiles": 0
+	}
+}
+```
+
+### Get planet ships
+
+`GET  /bot/planets/:planetID/ships`
+
+```
+curl 127.0.0.1:8080/bot/planets/33711028/ships
+```
+
+Result:
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": {
+		"LightFighter": 0,
+		"HeavyFighter": 0,
+		"Cruiser": 0,
+		"Battleship": 0,
+		"Battlecruiser": 0,
+		"Bomber": 0,
+		"Destroyer": 0,
+		"Deathstar": 0,
+		"SmallCargo": 0,
+		"LargeCargo": 0,
+		"ColonyShip": 0,
+		"Recycler": 0,
+		"EspionageProbe": 0,
+		"SolarSatellite": 0
 	}
 }
 ```
