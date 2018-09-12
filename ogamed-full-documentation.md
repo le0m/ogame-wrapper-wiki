@@ -398,3 +398,76 @@ Result:
 	}]
 }
 ```
+
+### Get bot planet with coordinates
+
+`GET  /bot/planets/:galaxy/:system/:position`
+
+```
+curl 127.0.0.1:8080/bot/planets/4/208/8
+```
+
+Result:
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": {
+		"Img": "https://gf1.geo.gfsrv.net/cdn9e/27d4ab63668a5100879ee5e2d67d78.png",
+		"ID": 33711028,
+		"Name": "Colony",
+		"Diameter": 13904,
+		"Coordinate": {
+			"Galaxy": 4,
+			"System": 208,
+			"Position": 8
+		},
+		"Fields": {
+			"Built": 117,
+			"Total": 218
+		},
+		"Temperature": {
+			"Min": 20,
+			"Max": 60
+		}
+	}
+}
+```
+
+
+### Get bot planet by planet ID
+
+`GET  /bot/planets/:planetID`
+
+```
+curl 127.0.0.1:8080/bot/planets/33711028
+```
+
+Result:
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": {
+		"Img": "https://gf1.geo.gfsrv.net/cdn9e/27d4ab63668a5100879ee5e2d67d78.png",
+		"ID": 33711028,
+		"Name": "Colony",
+		"Diameter": 13904,
+		"Coordinate": {
+			"Galaxy": 4,
+			"System": 208,
+			"Position": 8
+		},
+		"Fields": {
+			"Built": 117,
+			"Total": 218
+		},
+		"Temperature": {
+			"Min": 20,
+			"Max": 60
+		}
+	}
+}
+```
