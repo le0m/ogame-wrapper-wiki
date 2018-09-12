@@ -246,10 +246,10 @@ curl 127.0.0.1:8080/bot/planets/123/send-fleet -d 'ships=204,1&ships=205,2&speed
 
 ### Cancel a fleet
 
-`GET  /bot/fleets/:fleetID/cancel`
+`POST /bot/fleets/:fleetID/cancel`
 
 ```
-curl 127.0.0.1:8080/bot/fleets/5575790/cancel
+curl -XPOST 127.0.0.1:8080/bot/fleets/5575790/cancel
 ```
 
 ```json
