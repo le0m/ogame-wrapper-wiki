@@ -253,3 +253,95 @@ curl 127.0.0.1:8080/bot/fleets/5575790/cancel
 ```json
 {"Status":"ok","Code":200,"Message":"","Result":null}
 ```
+
+### Get attacks infos
+
+```
+curl 127.0.0.1:8080/bot/attacks
+```
+
+```json
+{"Status":"ok","Code":200,"Message":"","Result":[]}
+```
+
+### Get galaxy infos
+
+`GET  /bot/galaxy-infos/:galaxy/:system`
+
+```
+curl 127.0.0.1:8080/bot/galaxy-infos/4/205
+```
+
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": [{
+		"ID": 33659802,
+		"Activity": 37,
+		"Name": "Colony",
+		"Img": "https://gf2.geo.gfsrv.net/cdndf/3e567d6f16d040326c7a0ea29a4f41.gif",
+		"Coordinate": {
+			"Galaxy": 4,
+			"System": 205,
+			"Position": 8
+		},
+		"Administrator": false,
+		"Inactive": false,
+		"Vacation": false,
+		"StrongPlayer": true,
+		"HonorableTarget": true,
+		"Debris": {
+			"Metal": 0,
+			"Crystal": 0,
+			"RecyclersNeeded": 0
+		},
+		"Moon": null,
+		"Player": {
+			"ID": 100606,
+			"Name": "Ozon",
+			"Rank": 30
+		},
+		"Alliance": {
+			"ID": 8,
+			"Name": "POLSKA",
+			"Rank": 26,
+			"Member": 3
+		}
+	}]
+}
+```
+
+
+### Get researches
+
+```
+curl 127.0.0.1:8080/bot/get-research
+```
+
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": {
+		"EnergyTechnology": 4,
+		"LaserTechnology": 2,
+		"IonTechnology": 0,
+		"HyperspaceTechnology": 0,
+		"PlasmaTechnology": 0,
+		"CombustionDrive": 6,
+		"ImpulseDrive": 4,
+		"HyperspaceDrive": 0,
+		"EspionageTechnology": 7,
+		"ComputerTechnology": 8,
+		"Astrophysics": 9,
+		"IntergalacticResearchNetwork": 0,
+		"GravitonTechnology": 0,
+		"WeaponsTechnology": 0,
+		"ShieldingTechnology": 0,
+		"ArmourTechnology": 0
+	}
+}
+```
