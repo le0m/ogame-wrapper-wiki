@@ -345,3 +345,56 @@ curl 127.0.0.1:8080/bot/get-research
 	}
 }
 ```
+
+### Get bot planets
+
+```
+curl 127.0.0.1:8080/bot/planets
+```
+
+Result:
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": [{
+		"Img": "https://gf1.geo.gfsrv.net/cdnc3/05f9cbd97aef057af87dc00f448bdb.png",
+		"ID": 33707619,
+		"Name": "Homeworld",
+		"Diameter": 12800,
+		"Coordinate": {
+			"Galaxy": 4,
+			"System": 212,
+			"Position": 8
+		},
+		"Fields": {
+			"Built": 142,
+			"Total": 188
+		},
+		"Temperature": {
+			"Min": 4,
+			"Max": 44
+		}
+	},
+	{
+		"Img": "https://gf1.geo.gfsrv.net/cdn9e/27d4ab63668a5100879ee5e2d67d78.png",
+		"ID": 33711028,
+		"Name": "Colony",
+		"Diameter": 13904,
+		"Coordinate": {
+			"Galaxy": 4,
+			"System": 208,
+			"Position": 8
+		},
+		"Fields": {
+			"Built": 117,
+			"Total": 218
+		},
+		"Temperature": {
+			"Min": 20,
+			"Max": 60
+		}
+	}]
+}
+```
