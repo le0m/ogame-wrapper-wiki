@@ -7,7 +7,7 @@ curl 127.0.0.1:8080/bot/set-user-agent -d 'userAgent="new user agent"'
 ```
 
 Result:
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":null}
 ```
 
@@ -20,7 +20,7 @@ curl 127.0.0.1:8080/bot/server
 ```
 
 Result:
-```
+```json
 {
 	"Status": "ok",
 	"Code": 200,
@@ -61,7 +61,7 @@ Result:
 curl 127.0.0.1:8080/bot/server-url
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":"https://s152-en.ogame.gameforge.com"}
 ```
 
@@ -71,7 +71,7 @@ curl 127.0.0.1:8080/bot/server-url
 curl 127.0.0.1:8080/bot/language
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":"en"}
 ```
 
@@ -81,7 +81,7 @@ curl 127.0.0.1:8080/bot/language
 curl 127.0.0.1:8080/bot/login
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":null}
 ```
 
@@ -91,7 +91,7 @@ curl 127.0.0.1:8080/bot/login
 curl 127.0.0.1:8080/bot/logout
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":null}
 ```
 
@@ -101,7 +101,7 @@ curl 127.0.0.1:8080/bot/logout
 curl 127.0.0.1:8080/bot/server/speed
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":7}
 ```
 
@@ -111,7 +111,7 @@ curl 127.0.0.1:8080/bot/server/speed
 curl 127.0.0.1:8080/bot/server/speed-fleet
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":2}
 ```
 
@@ -121,7 +121,7 @@ curl 127.0.0.1:8080/bot/server/speed-fleet
 curl 127.0.0.1:8080/bot/server/version
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":"6.7.2-pl4"}
 ```
 
@@ -131,7 +131,7 @@ curl 127.0.0.1:8080/bot/server/version
 curl 127.0.0.1:8080/bot/server/time
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":"2018-09-12T21:33:57+01:00"}
 ```
 
@@ -141,7 +141,7 @@ curl 127.0.0.1:8080/bot/server/time
 curl 127.0.0.1:8080/bot/is-under-attack
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":false}
 ```
 
@@ -151,7 +151,7 @@ curl 127.0.0.1:8080/bot/is-under-attack
 curl 127.0.0.1:8080/bot/user-infos
 ```
 
-```
+```json
 {
 	"Status": "ok",
 	"Code": 200,
@@ -173,7 +173,7 @@ curl 127.0.0.1:8080/bot/user-infos
 curl 127.0.0.1:8080/bot/send-message -d 'playerID=123&message="How are you ?"'
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":null}
 ```
 
@@ -183,7 +183,7 @@ curl 127.0.0.1:8080/bot/send-message -d 'playerID=123&message="How are you ?"'
 curl 127.0.0.1:8080/bot/fleets
 ```
 
-```
+```json
 {
 	"Status": "ok",
 	"Code": 200,
@@ -232,28 +232,24 @@ curl 127.0.0.1:8080/bot/fleets
 
 ### Send a fleet
 
-```
-POST /bot/planets/:planetID/send-fleet
-```
+`POST /bot/planets/:planetID/send-fleet`
 
 ```
 curl 127.0.0.1:8080/bot/planets/123/send-fleet -d 'ships=204,1&ships=205,2&speed=10&galaxy=4&system=208&position=8&mission=3&metal=1&crystal=2&deuterium=3'
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":5575790}
 ```
 
 ### Cancel a fleet
 
-```
-GET  /bot/fleets/:fleetID/cancel
-```
+`GET  /bot/fleets/:fleetID/cancel`
 
 ```
 curl 127.0.0.1:8080/bot/fleets/5575790/cancel
 ```
 
-```
+```json
 {"Status":"ok","Code":200,"Message":"","Result":null}
 ```
