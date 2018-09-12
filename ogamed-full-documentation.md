@@ -211,7 +211,7 @@ curl 127.0.0.1:8080/bot/fleets
 		},
 		"Ships": {
 			"LightFighter": 1,
-			"HeavyFighter": 0,
+			"HeavyFighter": 2,
 			"Cruiser": 0,
 			"Battleship": 0,
 			"Battlecruiser": 0,
