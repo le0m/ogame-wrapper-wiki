@@ -590,3 +590,27 @@ Result:
 	}
 }
 ```
+
+### Get planet resources
+
+`GET  /bot/planets/:planetID/resources`
+
+```
+curl 127.0.0.1:8080/bot/planets/33711028/resources
+```
+
+Result:
+```json
+{
+	"Status": "ok",
+	"Code": 200,
+	"Message": "",
+	"Result": {
+		"Metal": 497650,
+		"Crystal": 276358,
+		"Deuterium": 76848,
+		"Energy": 349,
+		"Darkmatter": 25000
+	}
+}
+```
