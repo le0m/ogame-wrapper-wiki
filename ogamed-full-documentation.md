@@ -33,9 +33,9 @@ POST /bot/planets/:planetID/build/ships/:ogameID/:nbr
 GET  /bot/planets/:planetID/production  
 GET  /bot/planets/:planetID/constructions  
 POST /bot/planets/:planetID/cancel-building  
-[`POST /bot/planets/:planetID/cancel-research`]()  
-[`GET  /bot/planets/:planetID/resources`]()  
-[`POST /bot/planets/:planetID/send-fleet`]()  
+POST /bot/planets/:planetID/cancel-research  
+GET  /bot/planets/:planetID/resources  
+[`POST /bot/planets/:planetID/send-fleet`](#send-a-fleet)  
 
 ### Set user-agent
 
