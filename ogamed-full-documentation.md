@@ -299,7 +299,11 @@ curl 127.0.0.1:8080/bot/galaxy-infos/4/205
 			"Crystal": 0,
 			"RecyclersNeeded": 0
 		},
-		"Moon": null,
+		"Moon": {
+			"ID":33730993,
+			"Diameter":8944,
+			"Activity":15
+		},
 		"Player": {
 			"ID": 100606,
 			"Name": "Ozon",
