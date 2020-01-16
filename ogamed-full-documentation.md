@@ -52,6 +52,8 @@
 [`GET  /bot/planets/:planetID/resources`](#get-planet-resources)  
 [`POST /bot/planets/:planetID/send-ipm`](#send-missles)  
 
+Refer to [constants.go](https://github.com/alaingilbert/ogame/blob/master/constants.go) to figure out the IDs for `mission` / `speed` / `ships`...
+
 
 ### Details
 
@@ -389,8 +391,6 @@ Result:
 ### Send a fleet
 
 `POST /bot/planets/:planetID/send-fleet`
-
-Refer to [constants.go](https://github.com/alaingilbert/ogame/blob/master/constants.go) to figure out the IDs for `mission` / `speed` / `ships`...
 
 ```
 curl 127.0.0.1:8080/bot/planets/123/send-fleet -d 'ships=204,1&ships=205,2&speed=10&galaxy=4&system=208&position=8&mission=3&metal=1&crystal=2&deuterium=3'
