@@ -29,6 +29,7 @@
 [`GET  /bot/attacks`](#get-attacks-infos)  
 [`GET  /bot/galaxy-infos/:galaxy/:system`](#get-galaxy-infos)  
 [`GET  /bot/get-research`](#get-researches)  
+[`GET  /bot/price/:ogameID/:nbr`](#get-price)
 [`GET  /bot/planets`](#get-bot-planets)  
 [`GET  /bot/planets/:planetID`](#get-bot-planet-by-planet-id)  
 [`GET  /bot/planets/:galaxy/:system/:position`](#get-bot-planet-with-coordinates)  
@@ -894,6 +895,21 @@ Result:
 		"ArmourTechnology": 0
 	}
 }
+```
+
+### Get price
+
+`GET /bot/price/:ogameID/:nbr`
+
+The `:nbr` parameter must be the required level for buildings or the quantity for ships and defences.
+
+```
+curl 127.0.0.1:8080/bot/price/4/13
+```
+
+Result:
+```json
+{"Status":"ok","Code":200,"Message":"","Result":{"Metal":9730,"Crystal":3892,"Deuterium":0,"Energy":0,"Darkmatter":0}}
 ```
 
 ### Get bot planets
