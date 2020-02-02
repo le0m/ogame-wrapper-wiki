@@ -29,7 +29,7 @@
 [`GET  /bot/attacks`](#get-attacks-infos)  
 [`GET  /bot/galaxy-infos/:galaxy/:system`](#get-galaxy-infos)  
 [`GET  /bot/get-research`](#get-researches)  
-[`GET  /bot/price/:ogameID/:nbr`](#get-price)
+[`GET  /bot/price/:ogameID/:nbr`](#get-price)  
 [`GET  /bot/planets`](#get-bot-planets)  
 [`GET  /bot/planets/:planetID`](#get-bot-planet-by-planet-id)  
 [`GET  /bot/planets/:galaxy/:system/:position`](#get-bot-planet-with-coordinates)  
