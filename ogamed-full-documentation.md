@@ -331,48 +331,158 @@ curl 127.0.0.1:8080/bot/fleets
 Result:
 ```json
 {
-	"Status": "ok",
-	"Code": 200,
-	"Message": "",
-	"Result": [{
-		"Mission": 3,
-		"ReturnFlight": false,
-		"ID": 5575790,
-		"Resources": {
-			"Metal": 1,
-			"Crystal": 2,
-			"Deuterium": 3,
-			"Energy": 0,
-			"Darkmatter": 0
-		},
-		"Origin": {
-			"Galaxy": 4,
-			"System": 212,
-			"Position": 8
-		},
-		"Destination": {
-			"Galaxy": 4,
-			"System": 208,
-			"Position": 8
-		},
-		"Ships": {
-			"LightFighter": 1,
-			"HeavyFighter": 2,
-			"Cruiser": 0,
-			"Battleship": 0,
-			"Battlecruiser": 0,
-			"Bomber": 0,
-			"Destroyer": 0,
-			"Deathstar": 0,
-			"SmallCargo": 0,
-			"LargeCargo": 0,
-			"ColonyShip": 0,
-			"Recycler": 0,
-			"EspionageProbe": 0,
-			"SolarSatellite": 0
-		},
-		"ArriveIn": 2170
-	}]
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":[
+      {
+         "Mission":6,
+         "ReturnFlight":false,
+         "ID":1521262,
+         "Resources":{
+            "Metal":0,
+            "Crystal":0,
+            "Deuterium":0,
+            "Energy":0,
+            "Darkmatter":0
+         },
+         "Origin":{
+            "Galaxy":2,
+            "System":326,
+            "Position":12,
+            "Type":1
+         },
+         "Destination":{
+            "Galaxy":2,
+            "System":351,
+            "Position":8,
+            "Type":1
+         },
+         "Ships":{
+            "LightFighter":0,
+            "HeavyFighter":0,
+            "Cruiser":0,
+            "Battleship":0,
+            "Battlecruiser":0,
+            "Bomber":0,
+            "Destroyer":0,
+            "Deathstar":0,
+            "SmallCargo":0,
+            "LargeCargo":0,
+            "ColonyShip":0,
+            "Recycler":0,
+            "EspionageProbe":1,
+            "SolarSatellite":0,
+            "Crawler":0,
+            "Reaper":0,
+            "Pathfinder":0
+         },
+         "ArrivalTime":"2020-02-12T23:44:19Z",
+         "BackTime":"2020-02-12T23:56:01Z",
+         "ArriveIn":623,
+         "BackIn":1325,
+         "UnionID":0,
+         "TargetPlanetID":0
+      },
+      {
+         "Mission":1,
+         "ReturnFlight":false,
+         "ID":1521273,
+         "Resources":{
+            "Metal":0,
+            "Crystal":0,
+            "Deuterium":0,
+            "Energy":0,
+            "Darkmatter":0
+         },
+         "Origin":{
+            "Galaxy":2,
+            "System":326,
+            "Position":12,
+            "Type":1
+         },
+         "Destination":{
+            "Galaxy":2,
+            "System":351,
+            "Position":8,
+            "Type":1
+         },
+         "Ships":{
+            "LightFighter":1,
+            "HeavyFighter":0,
+            "Cruiser":0,
+            "Battleship":0,
+            "Battlecruiser":0,
+            "Bomber":0,
+            "Destroyer":0,
+            "Deathstar":0,
+            "SmallCargo":0,
+            "LargeCargo":0,
+            "ColonyShip":0,
+            "Recycler":0,
+            "EspionageProbe":0,
+            "SolarSatellite":0,
+            "Crawler":0,
+            "Reaper":0,
+            "Pathfinder":0
+         },
+         "ArrivalTime":"2020-02-13T16:44:01Z",
+         "BackTime":"2020-02-14T09:55:04Z",
+         "ArriveIn":61805,
+         "BackIn":123668,
+         "UnionID":0,
+         "TargetPlanetID":33636849
+      },
+      {
+         "Mission":3,
+         "ReturnFlight":false,
+         "ID":1521284,
+         "Resources":{
+            "Metal":25,
+            "Crystal":15,
+            "Deuterium":10,
+            "Energy":0,
+            "Darkmatter":0
+         },
+         "Origin":{
+            "Galaxy":2,
+            "System":326,
+            "Position":12,
+            "Type":1
+         },
+         "Destination":{
+            "Galaxy":2,
+            "System":351,
+            "Position":8,
+            "Type":1
+         },
+         "Ships":{
+            "LightFighter":1,
+            "HeavyFighter":0,
+            "Cruiser":0,
+            "Battleship":0,
+            "Battlecruiser":0,
+            "Bomber":0,
+            "Destroyer":0,
+            "Deathstar":0,
+            "SmallCargo":0,
+            "LargeCargo":0,
+            "ColonyShip":0,
+            "Recycler":0,
+            "EspionageProbe":0,
+            "SolarSatellite":0,
+            "Crawler":0,
+            "Reaper":0,
+            "Pathfinder":0
+         },
+         "ArrivalTime":"2020-02-13T16:44:24Z",
+         "BackTime":"2020-02-14T09:55:27Z",
+         "ArriveIn":61828,
+         "BackIn":123691,
+         "UnionID":0,
+         "TargetPlanetID":0
+      }
+   ]
 }
 ```
 
@@ -736,6 +846,29 @@ Result:
          "DestinationName":"Planeta Principal",
          "ArrivalTime":"2020-01-15T22:39:26Z",
          "ArriveIn":691,
+         "AttackerName":"Lord Rocket",
+         "AttackerID":104099,
+         "UnionID":0,
+         "Missiles":0,
+         "Ships":null
+      },
+      {
+         "MissionType":6,
+         "Origin":{
+            "Galaxy":2,
+            "System":351,
+            "Position":8,
+            "Type":1
+         },
+         "Destination":{
+            "Galaxy":2,
+            "System":326,
+            "Position":12,
+            "Type":1
+         },
+         "DestinationName":"Planeta Principal",
+         "ArrivalTime":"2020-02-12T23:51:25Z",
+         "ArriveIn":692,
          "AttackerName":"Lord Rocket",
          "AttackerID":104099,
          "UnionID":0,
