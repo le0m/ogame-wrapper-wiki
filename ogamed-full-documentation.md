@@ -504,12 +504,65 @@ Result:
 `POST /bot/planets/:planetID/send-fleet`
 
 ```
-curl 127.0.0.1:8080/bot/planets/123/send-fleet -d 'ships=204,1&ships=205,2&speed=10&galaxy=4&system=208&position=8&mission=3&metal=1&crystal=2&deuterium=3'
+curl 127.0.0.1:8080/bot/planets/123/send-fleet -d 'ships=204,1&ships=205,2&speed=10&galaxy=4&system=208&position=8&type=1&mission=3&metal=1&crystal=2&deuterium=3'
 ```
 
 Result:
 ```json
-{"Status":"ok","Code":200,"Message":"","Result":5575790}
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":{
+      "Mission":1,
+      "ReturnFlight":false,
+      "ID":73188,
+      "Resources":{
+         "Metal":0,
+         "Crystal":0,
+         "Deuterium":0,
+         "Energy":0,
+         "Darkmatter":0
+      },
+      "Origin":{
+         "Galaxy":1,
+         "System":20,
+         "Position":8,
+         "Type":1
+      },
+      "Destination":{
+         "Galaxy":1,
+         "System":19,
+         "Position":12,
+         "Type":1
+      },
+      "Ships":{
+         "LightFighter":0,
+         "HeavyFighter":0,
+         "Cruiser":5,
+         "Battleship":0,
+         "Battlecruiser":0,
+         "Bomber":0,
+         "Destroyer":0,
+         "Deathstar":0,
+         "SmallCargo":50,
+         "LargeCargo":0,
+         "ColonyShip":0,
+         "Recycler":0,
+         "EspionageProbe":0,
+         "SolarSatellite":0,
+         "Crawler":0,
+         "Reaper":0,
+         "Pathfinder":0
+      },
+      "ArrivalTime":"2020-02-13T11:33:09Z",
+      "BackTime":"2020-02-13T13:34:17Z",
+      "ArriveIn":7268,
+      "BackIn":14536,
+      "UnionID":0,
+      "TargetPlanetID":33620279
+   }
+}
 ```
 
 ### Cancel a fleet
