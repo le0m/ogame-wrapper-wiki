@@ -27,9 +27,15 @@
 [`POST /bot/delete-all-espionage-reports`](#delete-all-espionage-reports)  
 [`POST /bot/delete-all-reports/:tabIndex`](#delete-all-reports-by-tab)  
 [`GET  /bot/attacks`](#get-attacks-infos)  
+`GET  /bot/get-auction`  
+`POST /bot/do-auction`  
 [`GET  /bot/galaxy-infos/:galaxy/:system`](#get-galaxy-infos)  
 [`GET  /bot/get-research`](#get-researches)  
+`GET  /bot/buy-offer-of-the-day`  
 [`GET  /bot/price/:ogameID/:nbr`](#get-price)  
+[`GET  /bot/moons`](#get-moons)  
+`GET  /bot/moons/:moonID`  
+`GET  /bot/moons/:galaxy/:system/:position`  
 [`GET  /bot/planets`](#get-bot-planets)  
 [`GET  /bot/planets/:planetID`](#get-bot-planet-by-planet-id)  
 [`GET  /bot/planets/:galaxy/:system/:position`](#get-bot-planet-with-coordinates)  
@@ -46,12 +52,14 @@
 [`POST /bot/planets/:planetID/build/technology/:ogameID`](#build-technology)  
 [`POST /bot/planets/:planetID/build/defence/:ogameID/:nbr`](#build-defences)  
 [`POST /bot/planets/:planetID/build/ships/:ogameID/:nbr`](#build-ships)  
+`POST /bot/planets/:planetID/teardown/:ogameID`  
 [`GET  /bot/planets/:planetID/production`](#get-military-production)  
 [`GET  /bot/planets/:planetID/constructions`](#get-current-constructions)  
 [`POST /bot/planets/:planetID/cancel-building`](#cancel-construction)  
 [`POST /bot/planets/:planetID/cancel-research`](#cancel-technology)  
 [`GET  /bot/planets/:planetID/resources`](#get-planet-resources)  
 [`POST /bot/planets/:planetID/send-ipm`](#send-missles)  
+`GET  /bot/moons/:moonID/phalanx/:galaxy/:system/:position`  
 
 Refer to [constants.go](https://github.com/alaingilbert/ogame/blob/master/constants.go) to figure out the IDs for `mission` / `speed` / `ships`...
 
@@ -1096,6 +1104,107 @@ curl 127.0.0.1:8080/bot/price/4/13
 Result:
 ```json
 {"Status":"ok","Code":200,"Message":"","Result":{"Metal":9730,"Crystal":3892,"Deuterium":0,"Energy":0,"Darkmatter":0}}
+```
+
+### Get moons
+
+`GET /bot/moons`
+
+```
+curl 127.0.0.1:8080/bot/moons
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":[
+      {
+         "ID":33633793,
+         "Img":"https://gf3.geo.gfsrv.net/cdn2f/6c86116a2c1d0fc00f3b17a2b6ff49.gif",
+         "Name":"luna",
+         "Diameter":8602,
+         "Coordinate":{
+            "Galaxy":2,
+            "System":133,
+            "Position":8,
+            "Type":3
+         },
+         "Fields":{
+            "Built":0,
+            "Total":1
+         }
+      }
+   ]
+}
+```
+
+### Get moon by ID
+
+`GET /bot/moons/:moonID`
+
+```
+curl 127.0.0.1:8080/bot/moons/33633793
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":{
+      "ID":33633793,
+      "Img":"https://gf3.geo.gfsrv.net/cdn2f/6c86116a2c1d0fc00f3b17a2b6ff49.gif",
+      "Name":"luna",
+      "Diameter":8602,
+      "Coordinate":{
+         "Galaxy":2,
+         "System":133,
+         "Position":8,
+         "Type":3
+      },
+      "Fields":{
+         "Built":0,
+         "Total":1
+      }
+   }
+}
+```
+
+### Get moon with coordinates
+
+`GET /bot/moons/:galaxy/:system/:position`
+
+```
+curl 127.0.0.1:8080/bot/moons/2/133/8
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":{
+      "ID":33633793,
+      "Img":"https://gf3.geo.gfsrv.net/cdn2f/6c86116a2c1d0fc00f3b17a2b6ff49.gif",
+      "Name":"luna",
+      "Diameter":8602,
+      "Coordinate":{
+         "Galaxy":2,
+         "System":133,
+         "Position":8,
+         "Type":3
+      },
+      "Fields":{
+         "Built":0,
+         "Total":1
+      }
+   }
+}
 ```
 
 ### Get bot planets
