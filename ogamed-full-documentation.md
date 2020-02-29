@@ -34,8 +34,8 @@
 `GET  /bot/buy-offer-of-the-day`  
 [`GET  /bot/price/:ogameID/:nbr`](#get-price)  
 [`GET  /bot/moons`](#get-moons)  
-`GET  /bot/moons/:moonID`  
-`GET  /bot/moons/:galaxy/:system/:position`  
+[`GET  /bot/moons/:moonID`](#get-moon-by-id)  
+[`GET  /bot/moons/:galaxy/:system/:position`](#get-moon-with-coordinates)  
 [`GET  /bot/planets`](#get-bot-planets)  
 [`GET  /bot/planets/:planetID`](#get-bot-planet-by-planet-id)  
 [`GET  /bot/planets/:galaxy/:system/:position`](#get-bot-planet-with-coordinates)  
