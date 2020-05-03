@@ -36,6 +36,8 @@
 [`GET  /bot/moons`](#get-moons)  
 [`GET  /bot/moons/:moonID`](#get-moon-by-id)  
 [`GET  /bot/moons/:galaxy/:system/:position`](#get-moon-with-coordinates)  
+[`GET  /bot/celestials/:celestialID/items`](#get-items)  
+[`GET  /bot/celestials/:celestialID/items/:itemRef/activate`](#use-item)  
 [`GET  /bot/planets`](#get-bot-planets)  
 [`GET  /bot/planets/:planetID`](#get-bot-planet-by-planet-id)  
 [`GET  /bot/planets/:galaxy/:system/:position`](#get-bot-planet-with-coordinates)  
@@ -63,6 +65,72 @@
 
 Refer to [constants.go](https://github.com/alaingilbert/ogame/blob/master/constants.go) to figure out the IDs for `mission` / `speed` / `ships`...
 
+
+### Get items
+
+`GET  /bot/celestials/:celestialID/items`
+
+```
+curl 127.0.0.1:8080/bot/celestials/:celestialID/items
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":[
+      {
+         "Ref":"d9fa5f359e80ff4f4c97545d07c66dbadab1d1be",
+         "Name":"Amplificador de deuterio (bronce)",
+         "Image":"1467bd003a88e3b3c559a2cbebefd27651e9f7a4",
+         "ImageLarge":"bdc8c4a25495b7c4381fb54063c9a9bd97ef6850",
+         "Title":"Amplificador de deuterio (bronce)|10% más de producción de los sintetizadores de Deuterio en un planeta\u0026lt;br /\u0026gt;\u0026lt;br /\u0026gt;\nPlazo: 1s\u0026lt;br /\u0026gt;\u0026lt;br /\u0026gt;\nPrecio: 2.500 Materia Oscura\u0026lt;br /\u0026gt;\nEn el inventario: 0",
+         "Rarity":"common",
+         "Amount":0,
+         "AmountFree":0,
+         "AmountBought":0
+      },
+      {
+         "Ref":"d3d541ecc23e4daa0c698e44c32f04afd2037d84",
+         "Name":"DETROID (bronce)",
+         "Image":"610b867a8841d4a4c949d8a59719243580456452",
+         "ImageLarge":"56724c3a1dcae8036bb172f0be833a6f9a28bc27",
+         "Title":"DETROID (bronce)|Reduce \u0026lt;b\u0026gt;30m\u0026lt;/b\u0026gt; el tiempo requerido por las órdenes de construcción actuales.\u0026lt;br /\u0026gt;\u0026lt;br /\u0026gt;\nPlazo: ahora\u0026lt;br /\u0026gt;\u0026lt;br /\u0026gt;\nPrecio: --- \u0026lt;br /\u0026gt;\nEn el inventario: 1",
+         "Rarity":"common",
+         "Amount":1,
+         "AmountFree":0,
+         "AmountBought":0
+      },
+      {
+         "Ref":"3c9f85221807b8d593fa5276cdf7af9913c4a35d",
+         "Name":"Amplificador de cristal (bronce)",
+         "Image":"7c1dc1bf2d48d0f617e6f882a5df2ce8bfe7caef",
+         "ImageLarge":"9f3d99c2f79ce94216497f3f08312a385ae5e952",
+         "Title":"Amplificador de cristal (bronce)|10% más de producción en minas de cristal en un planeta\u0026lt;br /\u0026gt;\u0026lt;br /\u0026gt;\nPlazo: 1s\u0026lt;br /\u0026gt;\u0026lt;br /\u0026gt;\nPrecio: 2.500 Materia Oscura\u0026lt;br /\u0026gt;\nEn el inventario: 1",
+         "Rarity":"common",
+         "Amount":1,
+         "AmountFree":0,
+         "AmountBought":0
+      
+      }
+   ]
+}
+```
+
+### Use item
+
+`GET  /bot/celestials/:celestialID/items/:itemRef/activate`
+
+```
+curl 127.0.0.1:8080/bot/celestials/:celestialID/items/:itemRef/activate
+```
+
+Result:
+```
+???
+```
 
 ### Details
 
@@ -891,6 +959,7 @@ Result:
    "Message":"",
    "Result":[
       {
+         "ID":3405759,
          "MissionType":1,
          "Origin":{
             "Galaxy":2,
@@ -911,9 +980,28 @@ Result:
          "AttackerID":104099,
          "UnionID":0,
          "Missiles":0,
-         "Ships":null
+         "Ships":{
+            "LightFighter":10,
+            "HeavyFighter":0,
+            "Cruiser":0,
+            "Battleship":0,
+            "Battlecruiser":0,
+            "Bomber":0,
+            "Destroyer":0,
+            "Deathstar":0,
+            "SmallCargo":0,
+            "LargeCargo":0,
+            "ColonyShip":0,
+            "Recycler":0,
+            "EspionageProbe":0,
+            "SolarSatellite":0,
+            "Crawler":0,
+            "Reaper":0,
+            "Pathfinder":0              
+         }
       },
       {
+         "ID":3406759,
          "MissionType":6,
          "Origin":{
             "Galaxy":2,
@@ -934,7 +1022,25 @@ Result:
          "AttackerID":104099,
          "UnionID":0,
          "Missiles":0,
-         "Ships":null
+         "Ships":{
+            "LightFighter":0,
+            "HeavyFighter":0,
+            "Cruiser":0,
+            "Battleship":0,
+            "Battlecruiser":0,
+            "Bomber":0,
+            "Destroyer":0,
+            "Deathstar":0,
+            "SmallCargo":0,
+            "LargeCargo":0,
+            "ColonyShip":0,
+            "Recycler":0,
+            "EspionageProbe":10,
+            "SolarSatellite":0,
+            "Crawler":0,
+            "Reaper":0,
+            "Pathfinder":0              
+         }
       }
    ]
 }
