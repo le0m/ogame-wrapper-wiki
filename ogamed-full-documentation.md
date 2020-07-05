@@ -62,6 +62,7 @@
 [`GET  /bot/planets/:planetID/resources`](#get-planet-resources)  
 [`POST /bot/planets/:planetID/send-ipm`](#send-missles)  
 `GET  /bot/moons/:moonID/phalanx/:galaxy/:system/:position`  
+[`GET  /bot/moons/:moonID/jump-gate`](#jump-gate)  
 
 Refer to [constants.go](https://github.com/alaingilbert/ogame/blob/master/constants.go) to figure out the IDs for `mission` / `speed` / `ships`...
 
@@ -1789,4 +1790,25 @@ Result:
 
 ```
 curl 127.0.0.1:8080/bot/planets/33711028/send-ipm -d 'ipmAmount=10&galaxy=1&system=153&position=11&type=1&priority=401'
+```
+
+### Jump Gate
+
+`GET  /bot/moons/:moonID/jump-gate`
+
+```
+curl 127.0.0.1:8080/bot/moons/123654/jump-gate -d 'moonDestination=987456&ships=207,10&ships=205,5'
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":{
+      "rechargeCountdown":0,
+      "success":true
+   }
+}
 ```
