@@ -71,7 +71,7 @@
 [`POST /bot/planets/:planetID/send-ipm`](#send-missles)  
 `GET  /bot/moons/:moonID/phalanx/:galaxy/:system/:position`  
 [`GET  /bot/moons/:moonID/jump-gate`](#jump-gate)  
-[`GET  /bot/techs/:celestialID`](#get-planet-info)  
+[`GET  /bot/celestials/:celestialID/techs`](#get-planet-info)  
 
 Refer to [constants.go](https://github.com/alaingilbert/ogame/blob/master/constants.go) to figure out the IDs for `mission` / `speed` / `ships`...
 
@@ -2121,10 +2121,10 @@ Result:
 
 ### Get planet info
 
-`GET  /bot/techs/:celestialID`
+`GET  /bot/celestials/:celestialID/techs`
 
 ```
-curl 127.0.0.1:8080/bot/techs/33672579
+curl 127.0.0.1:8080/bot/celestials/33672579/techs
 ```
 
 Result:
