@@ -1,10 +1,15 @@
 [`GET  /`](#details)  
 [`GET  /bot/server`](#get-server)  
+[`GET  /bot/server-data`](#get-server-data)  
 [`POST /bot/set-user-agent`](#set-user-agent)  
 [`GET  /bot/server-url`](#get-server-url)  
 [`GET  /bot/language`](#get-language)  
 `GET  /bot/empire/type/:typeID`  
 [`POST /bot/page-content`](#get-page-content)  
+[`GET  /bot/captcha`](#get-captcha)  
+[`GET  /bot/captcha/icons/:challengeID`](#get-captcha-image)  
+[`GET  /bot/captcha/question/:challengeID`](#get-captcha-text)  
+[`POST /bot/captcha/solve`](#solve-captcha)  
 [`GET  /bot/login`](#login)  
 [`GET  /bot/logout`](#logout)  
 [`GET  /bot/username`](#get-username)  
@@ -14,7 +19,9 @@
 [`GET  /bot/server/version`](#get-ogame-server-version)  
 [`GET  /bot/server/time`](#get-ogame-server-time)  
 [`GET  /bot/is-under-attack`](#is-under-attack)  
+[`GET  /bot/is-vacation-mode`](#is-vacation-mode)  
 [`GET  /bot/user-infos`](#get-user-infos)  
+[`GET  /bot/character-class`](#get-character-class)  
 [`POST /bot/send-message`](#send-message)  
 [`GET  /bot/fleets`](#get-all-fleets)  
 [`GET  /bot/fleets/slots`](#get-fleet-slots)  
@@ -27,8 +34,8 @@
 [`POST /bot/delete-all-espionage-reports`](#delete-all-espionage-reports)  
 [`POST /bot/delete-all-reports/:tabIndex`](#delete-all-reports-by-tab)  
 [`GET  /bot/attacks`](#get-attacks-infos)  
-`GET  /bot/get-auction`  
-`POST /bot/do-auction`  
+[`GET  /bot/get-auction`](#get-auction)  
+[`POST /bot/do-auction`](#do-auction)  
 [`GET  /bot/galaxy-infos/:galaxy/:system`](#get-galaxy-infos)  
 [`GET  /bot/get-research`](#get-researches)  
 `GET  /bot/buy-offer-of-the-day`  
@@ -41,6 +48,7 @@
 [`GET  /bot/planets`](#get-bot-planets)  
 [`GET  /bot/planets/:planetID`](#get-bot-planet-by-planet-id)  
 [`GET  /bot/planets/:galaxy/:system/:position`](#get-bot-planet-with-coordinates)  
+[`GET  /bot/planets/:planetID/resources-details`](#get-planet-resources-details)  
 [`GET  /bot/planets/:planetID/resource-settings`](#get-planet-resource-settings)  
 [`POST /bot/planets/:planetID/resource-settings`](#set-planet-resource-settings)  
 [`GET  /bot/planets/:planetID/resources-buildings`](#get-planet-resources-buildings)  
@@ -63,9 +71,67 @@
 [`POST /bot/planets/:planetID/send-ipm`](#send-missles)  
 `GET  /bot/moons/:moonID/phalanx/:galaxy/:system/:position`  
 [`GET  /bot/moons/:moonID/jump-gate`](#jump-gate)  
+[`GET  /bot/techs/:celestialID`](#get-planet-info)  
 
 Refer to [constants.go](https://github.com/alaingilbert/ogame/blob/master/constants.go) to figure out the IDs for `mission` / `speed` / `ships`...
 
+
+### Get captcha
+
+`GET  /bot/captcha`
+
+```
+curl 127.0.0.1:8080/bot/captcha
+```
+
+Result:
+```html
+<img style="background-color: black;" src="/bot/captcha/question/4572c357-f110-44cd-88f0-0bbe31adbd45" /><br />
+<img style="background-color: black;" src="/bot/captcha/icons/4572c357-f110-44cd-88f0-0bbe31adbd45" /><br />
+<form action="/bot/captcha/solve" method="POST">
+	<input type="hidden" name="challenge_id" value="4572c357-f110-44cd-88f0-0bbe31adbd45" />
+	Enter 0,1,2 or 3 and press Enter <input type="number" name="answer" />" +
+</form>4572c357-f110-44cd-88f0-0bbe31adbd45
+```
+
+### Get captcha image
+
+`GET  /bot/captcha/icons/:challengeID`
+
+```
+curl 127.0.0.1:8080/bot/captcha/icons/4572c357-f110-44cd-88f0-0bbe31adbd45
+```
+
+Result:
+```
+<captcha image>
+```
+
+### Get captcha text
+
+`GET  /bot/captcha/question/:challengeID`
+
+```
+curl 127.0.0.1:8080/bot/captcha/question/4572c357-f110-44cd-88f0-0bbe31adbd45
+```
+
+Result:
+```
+<captcha question as image>
+```
+
+### Solve captcha
+
+`POST /bot/captcha/solve`
+
+```
+curl 127.0.0.1:8080/bot/captcha/solve -d 'answer=1&challenge_id=4572c357-f110-44cd-88f0-0bbe31adbd45'
+```
+
+Result:
+```
+<empty>
+```
 
 ### Get items
 
@@ -187,6 +253,58 @@ Result:
 			"DebrisFieldFactorDefence": 0
 		}
 	}
+}
+```
+
+### Get server data
+
+`GET  /bot/server-data`
+
+```
+curl 127.0.0.1:8080/bot/server-data
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":{
+      "Name":"Rhea",
+      "Number":144,
+      "Language":"pt",
+      "Timezone":"Europe/Lisbon",
+      "TimezoneOffset":"+00:00",
+      "Domain":"s144-pt.ogame.gameforge.com",
+      "Version":"7.6.5",
+      "Speed":10,
+      "SpeedFleet":3,
+      "Galaxies":5,
+      "Systems":499,
+      "ACS":false,
+      "RapidFire":true,
+      "DefToTF":false,
+      "DebrisFactor":0.5,
+      "DebrisFactorDef":0,
+      "RepairFactor":0.7,
+      "NewbieProtectionLimit":500000,
+      "NewbieProtectionHigh":50000,
+      "TopScore":141715314,
+      "BonusFields":25,
+      "DonutGalaxy":true,
+      "DonutSystem":true,
+      "WfEnabled":true,
+      "WfMinimumRessLost":150000,
+      "WfMinimumLossPercentage":5,
+      "WfBasicPercentageRepairable":45,
+      "GlobalDeuteriumSaveFactor":0.5,
+      "Bashlimit":0,
+      "ProbeCargo":0,
+      "ResearchDurationDivisor":2,
+      "DarkMatterNewAcount":8000,
+      "CargoHyperspaceTechMultiplier":5
+   }
 }
 ```
 
@@ -359,6 +477,24 @@ Result:
 {"Status":"ok","Code":200,"Message":"","Result":false}
 ```
 
+### Is vacation mode
+
+`GET  /bot/is-vacation-mode`
+
+```
+curl 127.0.0.1:8080/bot/is-vacation-mode
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":false
+}
+```
+
 ### Get user infos
 
 `GET /bot/user-infos`
@@ -381,6 +517,24 @@ Result:
 		"Total": 1050,
 		"HonourPoints": 0
 	}
+}
+```
+
+### Get character class
+
+`GET  /bot/character-class`
+
+```
+curl 127.0.0.1:8080/bot/character-class
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":1
 }
 ```
 
@@ -938,7 +1092,7 @@ Tab index must be one of the following:
 - 24 => Other
 
 ```
-curl -XPOST 127.0.0.1:8080/bot/delete-all-reports/0
+curl -XPOST 127.0.0.1:8080/bot/delete-all-reports/20
 ```
 
 Result:
@@ -1044,6 +1198,114 @@ Result:
          }
       }
    ]
+}
+```
+
+### Get auction
+
+`GET  /bot/get-auction`
+
+```
+curl 127.0.0.1:8080/bot/get-auction
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":{
+      "HasFinished":false,
+      "Endtime":1500,
+      "NumBids":0,
+      "CurrentBid":0,
+      "AlreadyBid":0,
+      "MinimumBid":1000,
+      "DeficitBid":0,
+      "HighestBidder":"",
+      "HighestBidderUserID":0,
+      "CurrentItem":"reforço de cristal bronze",
+      "CurrentItemLong":"reforço de cristal bronze|+10% mais produção de cristal num planeta\u003cbr /\u003e\u003cbr /\u003e\nduração: 1s\u003cbr /\u003e\u003cbr /\u003e\npreço: --- \u003cbr /\u003e\nno inventário: 1",
+      "Inventory":1,
+      "Token":"4fc8697d2d784274d5bb3bd22d6449c3",
+      "ResourceMultiplier":{
+         "Metal":1,
+         "Crystal":1.5,
+         "Deuterium":3,
+         "Honor":100
+      },
+      "Resources":{
+         "33662578":{
+            "imageFileName":"normal_8",
+            "input":{
+               "crystal":1590000,
+               "deuterium":473432,
+               "metal":2920000
+            },
+            "isMoon":false,
+            "name":"Planeta Principal",
+            "otherPlanetId":null,
+            "output":{
+               "crystal":0,
+               "deuterium":0,
+               "metal":0
+            }
+         },
+         "33665192":{
+            "imageFileName":"jungle_1",
+            "input":{
+               "crystal":470000,
+               "deuterium":254999,
+               "metal":1590000
+            },
+            "isMoon":false,
+            "name":"Colonia",
+            "otherPlanetId":null,
+            "output":{
+               "crystal":0,
+               "deuterium":0,
+               "metal":0
+            }
+         },
+         "33665346":{
+            "imageFileName":"jungle_5",
+            "input":{
+               "crystal":470000,
+               "deuterium":255000,
+               "metal":1590000
+            },
+            "isMoon":false,
+            "name":"Colonia",
+            "otherPlanetId":null,
+            "output":{
+               "crystal":0,
+               "deuterium":0,
+               "metal":0
+            }
+         }
+      }
+   }
+}
+```
+
+### Do auction
+
+`POST /bot/do-auction`
+
+```
+curl 127.0.0.1:8080/bot/do-auction -d '33662578=1000:0:0'
+```
+
+Request body format: `celestialID=metal:crystal:deuterium`
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":null
 }
 ```
 
@@ -1441,6 +1703,50 @@ Result:
 }
 ```
 
+### Get planet resources details
+
+`GET  /bot/planets/:planetID/resources-details`
+
+```
+curl 127.0.0.1:8080/bot/planets/33672579/resources-details
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":{
+      "Metal":{
+         "Available":647533,
+         "StorageCapacity":2920000,
+         "CurrentProduction":55038
+      },
+      "Crystal":{
+         "Available":870631,
+         "StorageCapacity":1590000,
+         "CurrentProduction":21240
+      },
+      "Deuterium":{
+         "Available":433575,
+         "StorageCapacity":470000,
+         "CurrentProduction":4264
+      },
+      "Energy":{
+         "Available":-2525,
+         "CurrentProduction":3616,
+         "Consumption":-6141
+      },
+      "Darkmatter":{
+         "Available":2048,
+         "Purchased":0,
+         "Found":2048
+      }
+   }
+}
+```
+
 ### Get planet resource settings
 
 `GET /bot/planets/:planetID/resource-settings`
@@ -1809,6 +2115,98 @@ Result:
    "Result":{
       "rechargeCountdown":0,
       "success":true
+   }
+}
+```
+
+### Get planet info
+
+`GET  /bot/techs/:celestialID`
+
+```
+curl 127.0.0.1:8080/bot/techs/33672579
+```
+
+Result:
+```json
+{
+   "Status":"ok",
+   "Code":200,
+   "Message":"",
+   "Result":{
+      "defenses":{
+         "RocketLauncher":0,
+         "LightLaser":0,
+         "HeavyLaser":0,
+         "GaussCannon":0,
+         "IonCannon":0,
+         "PlasmaTurret":0,
+         "SmallShieldDome":0,
+         "LargeShieldDome":0,
+         "AntiBallisticMissiles":0,
+         "InterplanetaryMissiles":0
+      },
+      "facilities":{
+         "RoboticsFactory":10,
+         "Shipyard":9,
+         "ResearchLab":7,
+         "AllianceDepot":0,
+         "MissileSilo":0,
+         "NaniteFactory":0,
+         "Terraformer":0,
+         "SpaceDock":0,
+         "LunarBase":0,
+         "SensorPhalanx":0,
+         "JumpGate":0
+      },
+      "researches":{
+         "EnergyTechnology":3,
+         "LaserTechnology":3,
+         "IonTechnology":0,
+         "HyperspaceTechnology":0,
+         "PlasmaTechnology":0,
+         "CombustionDrive":6,
+         "ImpulseDrive":3,
+         "HyperspaceDrive":0,
+         "EspionageTechnology":4,
+         "ComputerTechnology":3,
+         "Astrophysics":3,
+         "IntergalacticResearchNetwork":0,
+         "GravitonTechnology":0,
+         "WeaponsTechnology":0,
+         "ShieldingTechnology":0,
+         "ArmourTechnology":0
+      },
+      "ships":{
+         "LightFighter":0,
+         "HeavyFighter":0,
+         "Cruiser":0,
+         "Battleship":0,
+         "Battlecruiser":0,
+         "Bomber":0,
+         "Destroyer":0,
+         "Deathstar":0,
+         "SmallCargo":0,
+         "LargeCargo":10,
+         "ColonyShip":0,
+         "Recycler":0,
+         "EspionageProbe":0,
+         "SolarSatellite":70,
+         "Crawler":0,
+         "Reaper":0,
+         "Pathfinder":0
+      },
+      "supplies":{
+         "MetalMine":26,
+         "CrystalMine":22,
+         "DeuteriumSynthesizer":15,
+         "SolarPlant":22,
+         "FusionReactor":0,
+         "SolarSatellite":70,
+         "MetalStorage":9,
+         "CrystalStorage":8,
+         "DeuteriumTank":6
+      }
    }
 }
 ```
